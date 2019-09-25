@@ -24,25 +24,28 @@ public class DivideAndConquer {
         for (int i = 0; i <= mid; i++) {
             B[i] = values[a];
         }
-        
+
         for (int j = mid + 1; j <= values.length; j++) {
             C[j] = values[j];
         }
-          
-        
 
         int rB = findHighestPassengerDensity(B);
         int rC = findHighestPassengerDensity(C);
         int rA = findCrossPassengerDensity(B, C);
         return (max(rA, rB, rC));
     }
-    
+
     public static int findCrossPassengerDensity(int[] B, int[] C) {
         return -1;
     }
-    
-    public static int max(int[] values, int[] B, int[] C) {
-        return -1;
+
+    public static int max(int rA, int rB, int rC) {
+        if (rA >= rB && rA >= rC) {
+            return rA;
+        } else if (rB >= rA && rB >= rC) {
+            return rB;
+        } else {
+            return rC;
+        }
     }
-    
 }
