@@ -12,29 +12,36 @@ package capmetro;
 public class DivideAndConquer {
 
     public static int findHighestPassengerDensity(int[] values) {
-        
+
         int n = values.length;
-        int maxDensity = 0;
-        int currMax = 0;
-       
+
         if (n == 1) {
             return values[0];
         }
-        int leftSize = n/2;
+        int leftSize = n / 2;
         int rightSize = n - leftSize;
 
         int[] B = new int[leftSize];
         int[] C = new int[rightSize];
-        
+
         //Initializing left side array
         for (int i = 0; i < leftSize; i++) {
             B[i] = values[i];
         }
         //Initializing right side array
-        for (int i = leftSize; i <= n; i++) {
+        for (int i = leftSize; i < n; i++) {
             C[i - leftSize] = values[i];
         }
-        
+
+        int rB = findHighestPassengerDensity(B);
+        int rC = findHighestPassengerDensity(C);
+        int rA = findCrossPassengerDensity(B, C);
+        return (max(rA, rB, rC));
+    }
+
+    public static int findCrossPassengerDensity(int[] B, int[] C) {
+        int maxDensity = 0;
+        int currMax = 0;
         for (int j = 0; j < B.length; j++) {
             if (currMax >= maxDensity) {
                 maxDensity = currMax;
@@ -44,10 +51,10 @@ public class DivideAndConquer {
             } else if (currMax > B[j]) {
                 currMax += B[j];
             } else if (currMax < B[j]) {
-                currMax = 0;
+                currMax += B[j];
             }
         }
-        
+
         for (int j = 0; j < C.length; j++) {
             if (currMax >= maxDensity) {
                 maxDensity = currMax;
@@ -57,20 +64,10 @@ public class DivideAndConquer {
             } else if (currMax > C[j]) {
                 currMax += C[j];
             } else if (currMax < C[j]) {
-                currMax = 0;
+                currMax += C[j];
             }
-        }
-        
-
-        int rB = findHighestPassengerDensity(B);
-        int rC = findHighestPassengerDensity(C);
-        //int rA = findCrossPassengerDensity(B, C);
-        //return (max(rA, rB, rC));
-        return (max(rB, rC));
-    }
-
-    public static int findCrossPassengerDensity(int[] B, int[] C) {
-        return -1;
+        };
+        return maxDensity;
     }
 
     public static int max(int rA, int rB, int rC) {
@@ -82,4 +79,5 @@ public class DivideAndConquer {
             return rC;
         }
     }
+
 }

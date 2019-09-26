@@ -50,7 +50,7 @@ public class UpdatedDriver {
 	    values.add(1);
 	    values.add(-5);
 	    values.add(1);
-	    values.add(9);
+	    values.add(10);
 	    values.add(-7);
 	    values.add(9);
 	    values.add(-4);
@@ -67,14 +67,14 @@ public class UpdatedDriver {
 		System.out.println("           and the answer is " + highestPassengerDensity);
 		System.out.println("");
 		
-		// Run iterative algorithm
-		startTime = new Date(); //start clock since data is created
-		highestPassengerDensity = Iterative.findHighestPassengerDensity(createValueArray(values));
-		endTime = new Date(); //stop clock since max computed
-		System.out.println("   --- The elapsed time for the Iterative algorithm is "
-				+ (endTime.getTime() - startTime.getTime()) + " milliseconds,");
-		System.out.println("           and the answer is " + highestPassengerDensity);
-		System.out.println("");
+//		// Run iterative algorithm
+//		startTime = new Date(); //start clock since data is created
+//		highestPassengerDensity = Iterative.findHighestPassengerDensity(createValueArray(values));
+//		endTime = new Date(); //stop clock since max computed
+//		System.out.println("   --- The elapsed time for the Iterative algorithm is "
+//				+ (endTime.getTime() - startTime.getTime()) + " milliseconds,");
+//		System.out.println("           and the answer is " + highestPassengerDensity);
+//		System.out.println("");
 	}
 	//turn an ArrayList<Integer> into an int[]
     public static int[] createValueArray(ArrayList<Integer> list){
