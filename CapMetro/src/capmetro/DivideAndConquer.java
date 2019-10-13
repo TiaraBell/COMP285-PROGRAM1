@@ -45,12 +45,12 @@ public class DivideAndConquer {
         for (int j = 0; j < B.length; j++) {
             if (currMax >= maxDensity) {
                 maxDensity = currMax;
+            } else if (currMax < 0) {
+                return -1;
             }
             if (B[j] >= 0) {
                 currMax += B[j];
             } else if (currMax > B[j]) {
-                currMax += B[j];
-            } else if (currMax < B[j]) {
                 currMax += B[j];
             }
         }
@@ -58,12 +58,12 @@ public class DivideAndConquer {
         for (int j = 0; j < C.length; j++) {
             if (currMax >= maxDensity) {
                 maxDensity = currMax;
+            } else if (currMax < 0) {
+                return -1;
             }
             if (C[j] >= 0) {
                 currMax += C[j];
             } else if (currMax > C[j]) {
-                currMax += C[j];
-            } else if (currMax < C[j]) {
                 currMax += C[j];
             }
         };

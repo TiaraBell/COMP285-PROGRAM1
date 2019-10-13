@@ -10,10 +10,27 @@ package capmetro;
  * @author tiara
  */
 public class Iterative {
-     public static int findHighestPassengerDensity (int[] values) {
-		//  You need to write this method. 
+
+    public static int findHighestPassengerDensity(int[] values) {
+        int n = values.length;
+
+        if (n == 1) {
+            return values[0];
+        }
         
-    	return -1;
+        int maxDensity = 0;
+        int currMax = 0;
+        for (int i = 0; i < values.length; i++) {
+            if (currMax >= maxDensity) {
+                maxDensity = currMax;
+            }
+            currMax += values[i];
+            if (values[i] < 0) {
+                currMax += 0;
+            }
+            
+        }
+        return maxDensity;
     }
 
 }
